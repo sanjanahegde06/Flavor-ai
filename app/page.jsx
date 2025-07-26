@@ -77,18 +77,20 @@ export default function Page() {
     <>
       {/* Navbar */}
       <div
-        className={`navbar fixed top-0 left-0 right-0 z-50 text-white shadow-lg flex flex-col md:flex-row transition-all duration-300 ${
+        className={`navbar fixed top-0 left-0 right-0 z-50 text-white shadow-lg flex flex-row items-center p-2 md:p-4 transition-all duration-300 ${
         isScrolled
           ? "bg-gradient-to-r from-white/10 via-white/20 to-white/10 backdrop-blur-lg backdrop-saturate-150"
           : "bg-gradient-to-r from-white/20 via-white/30 to-white/20 backdrop-blur-md"
         }`}
         style={{ margin: 0, border: "none" }}
       >
-        <div className="flex-1 flex items-center gap-4">
+        <div className="flex flex-col md:flex-row md:items-center gap-1 md:gap-4">
           <Link
             href="#"
             id="main"
-            className="btn btn-ghost text-2xl font-bold text-white"
+            className={`text-2xl font-bold transition-colors duration-300 ${
+      isScrolled ? "text-gray-600" : "text-white"
+    }`}
           >
             Flavor AI
           </Link>
@@ -96,7 +98,7 @@ export default function Page() {
             href="https://github.com/Ayushjhawar8/Flavor-ai"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-2 bg-gray-200 hover:bg-gray-600 text-gray-800 hover:text-white px-3 py-2 rounded-full text-sm font-medium shadow-lg transition-all duration-300 hover:scale-105 backdrop-blur-md border border-white/60 animate-pulse"
+            className="group flex items-center gap-2 bg-gray-200 hover:bg-gray-600 text-gray-800 hover:text-white px-3 py-2 rounded-full text-sm font-medium shadow-lg transition-all duration-300 hover:scale-105 backdrop-blur-md border border-white/60 animate-pulse w-fit"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -118,13 +120,16 @@ export default function Page() {
             </svg>
           </a>
         </div>
+        <div className="ml-auto">
         <RecipeSearchBar
+        isScrolled={isScrolled}
           handleBlur={handleBlur}
           handleSearchFocus={handleSearchFocus}
           showResults={showResults}
           setShowResults={setShowResults}
           className="bg-purple-900/30 placeholder-gray-200 text-white border border-white/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-300 backdrop-blur-sm"
         />
+        </div>
       </div>
 
       {/* Content */}
@@ -139,16 +144,6 @@ export default function Page() {
               <h1 className="text-5xl md:text-7xl font-extrabold text-indigo-900 leading-tight">
                 Start Your Flavor Journey
               </h1>
-              <div className="absolute -top-2 -right-2 transform rotate-12">
-                <a 
-                  href="https://www.codebuff.com/docs/help#getting-started-with-codebuff"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-purple-600 text-white text-xs px-2 py-1 rounded-full shadow-lg animate-bounce hover:bg-purple-700 transition-colors"
-                >
-                  Built with CodeBuff ✨
-                </a>
-              </div>
             </div>
             <p className="text-xl md:text-2xl text-gray-700 max-w-3xl leading-relaxed">
               Unlock a world of flavors with AI-curated recipes, personalized
@@ -288,8 +283,6 @@ export default function Page() {
           </div>
         </footer>
       </div>
-
-
     </>
   );
 }
