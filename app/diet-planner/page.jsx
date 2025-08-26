@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import BackButton from "@/components/BackButton"; // Import the BackButton component
+import BackButton from "@/components/BackButton"; 
 
 export default function DietPlannerPage() {
   const [formData, setFormData] = useState({
